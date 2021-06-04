@@ -30,6 +30,17 @@ public class Endereco {
     @OneToOne(mappedBy = "endereco")
     private Hotel hotel;
 
+    public Endereco() {
+    }
+
+    public Endereco(String logradouro, String cidade, String estado, String cep, String pais, Hotel hotel) {
+        this.logradouro = logradouro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+        this.pais = pais;
+        this.hotel = hotel;
+    }
 
     public Integer getId() {
         return id;
@@ -77,5 +88,13 @@ public class Endereco {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }

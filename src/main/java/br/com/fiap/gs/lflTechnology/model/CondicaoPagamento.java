@@ -23,4 +23,57 @@ public class CondicaoPagamento {
     @Enumerated(EnumType.STRING)
     @Column(name = "ds_tipo_pagamento", nullable = false)
     private TipoPagamento tipoPagamento;
+
+    @OneToOne(mappedBy = "cd_condicao_pagamento")
+    private Preco preco;
+
+    public CondicaoPagamento() {
+    }
+
+    public CondicaoPagamento(String descricao, Integer quantidadeParcelas, TipoPagamento tipoPagamento, Preco preco) {
+        this.descricao = descricao;
+        this.quantidadeParcelas = quantidadeParcelas;
+        this.tipoPagamento = tipoPagamento;
+        this.preco = preco;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Integer getQuantidadeParcelas() {
+        return quantidadeParcelas;
+    }
+
+    public void setQuantidadeParcelas(Integer quantidadeParcelas) {
+        this.quantidadeParcelas = quantidadeParcelas;
+    }
+
+    public TipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(TipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public Preco getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Preco preco) {
+        this.preco = preco;
+    }
 }

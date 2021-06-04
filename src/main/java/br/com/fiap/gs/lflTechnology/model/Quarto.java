@@ -1,5 +1,8 @@
 package br.com.fiap.gs.lflTechnology.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +27,58 @@ public class Quarto {
     @Column(name = "ds_comodidades", length = 1000)
     private String descricaoComodidades;
 
+    @Column(name = "nr_dias_reservados")
+    @Min(1)
+    @Max(350)
+    private Integer diasReservados;
 
     private Preco preco;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public double getTamanhoMetrosQuadrados() {
+        return tamanhoMetrosQuadrados;
+    }
+
+    public void setTamanhoMetrosQuadrados(double tamanhoMetrosQuadrados) {
+        this.tamanhoMetrosQuadrados = tamanhoMetrosQuadrados;
+    }
+
+    public String getDescricaoComodidades() {
+        return descricaoComodidades;
+    }
+
+    public void setDescricaoComodidades(String descricaoComodidades) {
+        this.descricaoComodidades = descricaoComodidades;
+    }
+
+    public Integer getDiasReservados() {
+        return diasReservados;
+    }
+
+    public void setDiasReservados(Integer diasReservados) {
+        this.diasReservados = diasReservados;
+    }
+
+    public Preco getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Preco preco) {
+        this.preco = preco;
+    }
 }

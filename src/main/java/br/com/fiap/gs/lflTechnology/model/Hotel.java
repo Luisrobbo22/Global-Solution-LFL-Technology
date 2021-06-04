@@ -31,6 +31,16 @@ public class Hotel {
     @JoinColumn(name = "cd_endereco")
     private Endereco endereco;
 
+    public Hotel() {
+    }
+
+    public Hotel(String nome, String descricao, String telefone, String email, Endereco endereco) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
+    }
 
     public Integer getId() {
         return id;
@@ -79,4 +89,6 @@ public class Hotel {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+
 }
