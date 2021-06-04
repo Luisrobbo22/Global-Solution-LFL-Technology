@@ -32,6 +32,7 @@ public class Quarto {
     @Max(350)
     private Integer diasReservados;
 
+    @Transient
     private Preco preco;
 
     public String getNome() {

@@ -13,7 +13,7 @@ public class EntityManagerFactorySingleton {
 	
 	public static EntityManagerFactory getInstance(){
 		if (factory == null){
-			factory = Persistence.createEntityManagerFactory("oracle");
+			factory = Persistence.createEntityManagerFactory("GlobalSolutionLFLTechnology-persistence-unit");
 		}
 		return factory;
 	}
