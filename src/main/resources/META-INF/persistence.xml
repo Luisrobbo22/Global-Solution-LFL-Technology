@@ -1,34 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-		     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
-		     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="persistence-unit" transaction-type="RESOURCE_LOCAL">
-		<description>Forge Persistence Unit</description>
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-	  <class>br.com.fiap.gs.lflTechnology.model.Hotel</class>
-	  <class>br.com.fiap.gs.lflTechnology.model.Quarto</class>
-	  <class>br.com.fiap.gs.lflTechnology.model.Preco</class>
-	  <class>br.com.fiap.gs.lflTechnology.model.CondicaoPagamento</class>
-	  <class>br.com.fiap.gs.lflTechnology.model.Endereco</class>
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <description>Forge Persistence Unit</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--        <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+        <class>br.com.fiap.gs.lflTechnology.model.Hotel</class>
+        <class>br.com.fiap.gs.lflTechnology.model.Quarto</class>
+        <class>br.com.fiap.gs.lflTechnology.model.Preco</class>
+        <class>br.com.fiap.gs.lflTechnology.model.CondicaoPagamento</class>
+        <class>br.com.fiap.gs.lflTechnology.model.Endereco</class>
 
-	  <exclude-unlisted-classes>false</exclude-unlisted-classes>
-		<properties>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
-			<!-- Propriedades JDBC -->
-			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/globalSolutionLflTechnology" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
+        <properties>
+<!--            <property name="hibernate.show_sql" value="true"/>-->
+<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+<!--            <property name="hibernate.dialect"-->
+<!--                      value="org.hibernate.dialect.Oracle12cDialect"/>-->
+<!--            <property name="javax.persistence.jdbc.driver"-->
+<!--                      value="oracle.jdbc.OracleDriver"/>-->
+<!--            <property name="javax.persistence.jdbc.user" value="RM82762"/>-->
+<!--            <property name="javax.persistence.jdbc.password"-->
+<!--                      value="221297"/>-->
+<!--            <property name="javax.persistence.jdbc.url"-->
+<!--                      value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl/globalSolutionLflTechnology"/>-->
+<!--        </properties>-->
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property
-				name="hibernate.transaction.flush_before_completion" value="true" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-		</properties>
-  </persistence-unit>
+
+                			<!-- Propriedades JDBC -->
+                			<property name="javax.persistence.jdbc.driver"
+                				value="com.mysql.jdbc.Driver" />
+                			<property name="javax.persistence.jdbc.url"
+                				value="jdbc:mysql://localhost:3306/globalSolution" />
+                			<property name="javax.persistence.jdbc.user" value="root" />
+                			<property name="javax.persistence.jdbc.password" value="" />
+
+                			<property name="hibernate.hbm2ddl.auto" value="update" />
+                			<property name="hibernate.show_sql" value="true" />
+                			<property name="hibernate.format_sql" value="true" />
+                			<property
+                				name="hibernate.transaction.flush_before_completion" value="true" />
+                			<property name="hibernate.dialect"
+                				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                		</properties>
+    </persistence-unit>
 </persistence>

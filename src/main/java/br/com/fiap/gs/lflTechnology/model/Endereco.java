@@ -3,12 +3,11 @@ package br.com.fiap.gs.lflTechnology.model;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "endereco", sequenceName = "SQ_LFL_ENDERECO", allocationSize = 1)
 @Table(name = "T_LFL_ENDERECO")
 public class Endereco {
 
     @Id
-    @GeneratedValue(generator = "endereco", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_endereco")
     private Integer id;
 

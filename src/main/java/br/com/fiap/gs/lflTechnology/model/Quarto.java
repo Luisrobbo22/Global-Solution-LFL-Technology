@@ -6,12 +6,11 @@ import jakarta.validation.constraints.Min;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "quarto", sequenceName = "SQ_LFL_QUARTO", allocationSize = 1)
 @Table(name = "T_LFL_QUARTO")
 public class Quarto {
 
     @Id
-    @GeneratedValue(generator = "quarto", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_quarto")
     private Integer id;
 
@@ -35,6 +34,10 @@ public class Quarto {
     @ManyToOne
     @JoinColumn(name = "quartos", nullable = false)
     private Hotel hotel;
+
+    @OneToOne
+    @JoinColumn(name = "cd_preco", nullable = false)
+    private Preco preco;
 
     public String getNome() {
         return nome;

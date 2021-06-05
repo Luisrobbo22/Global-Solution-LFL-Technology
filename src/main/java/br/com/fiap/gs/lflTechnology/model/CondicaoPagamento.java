@@ -3,14 +3,14 @@ package br.com.fiap.gs.lflTechnology.model;
 import br.com.fiap.gs.lflTechnology.model.enums.TipoPagamento;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@SequenceGenerator(name = "condPagamento", sequenceName = "SQ_LFL_CONDICAO_PAGAMENTO", allocationSize = 1)
 @Table(name = "T_LFL_CONDICAO_PAGAMENTO")
 public class CondicaoPagamento {
 
     @Id
-    @GeneratedValue(generator = "condPagamento", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_condicao_pagamento")
     private Integer id;
 
@@ -24,18 +24,12 @@ public class CondicaoPagamento {
     @Column(name = "ds_tipo_pagamento", nullable = false)
     private TipoPagamento tipoPagamento;
 
-    @OneToOne(mappedBy = "condicaoPagamento")
-    private Preco preco;
+    @ManyToMany(mappedBy = "condicoesPagamentos")
+    private List<Preco> precos;
 
     public CondicaoPagamento() {
     }
 
-    public CondicaoPagamento(String descricao, Integer quantidadeParcelas, TipoPagamento tipoPagamento, Preco preco) {
-        this.descricao = descricao;
-        this.quantidadeParcelas = quantidadeParcelas;
-        this.tipoPagamento = tipoPagamento;
-        this.preco = preco;
-    }
 
     public Integer getId() {
         return id;
@@ -69,11 +63,11 @@ public class CondicaoPagamento {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public Preco getPreco() {
-        return preco;
+    public List<Preco> getPrecos() {
+        return precos;
     }
 
-    public void setPreco(Preco preco) {
-        this.preco = preco;
+    public void setPrecos(List<Preco> precos) {
+        this.precos = precos;
     }
 }

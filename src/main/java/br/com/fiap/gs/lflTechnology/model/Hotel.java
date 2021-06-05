@@ -1,18 +1,19 @@
 package br.com.fiap.gs.lflTechnology.model;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(name = "hotel", sequenceName = "SQ_LFL_HOTEL", allocationSize = 1)
 @Table(name = "T_LFL_HOTEL")
 public class Hotel {
 
     @Id
-    @GeneratedValue(generator = "hotel", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_hotel")
     private Integer id;
 
@@ -28,6 +29,11 @@ public class Hotel {
     @Column(name = "ds_email", length = 60)
     @Email
     private String email;
+
+    @Column(name = "nr_avaliacao")
+    @Min(0)
+    @Max(5)
+    private int avaliacao;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_endereco")
