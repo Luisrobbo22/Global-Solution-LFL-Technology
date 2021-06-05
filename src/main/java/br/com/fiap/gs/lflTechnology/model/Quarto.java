@@ -32,8 +32,9 @@ public class Quarto {
     @Max(350)
     private Integer diasReservados;
 
-    @Transient
-    private Preco preco;
+    @ManyToOne
+    @JoinColumn(name = "quartos", nullable = false)
+    private Hotel hotel;
 
     public String getNome() {
         return nome;
@@ -74,12 +75,11 @@ public class Quarto {
     public void setDiasReservados(Integer diasReservados) {
         this.diasReservados = diasReservados;
     }
-
-    public Preco getPreco() {
-        return preco;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setPreco(Preco preco) {
-        this.preco = preco;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }

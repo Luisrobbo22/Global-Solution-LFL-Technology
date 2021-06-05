@@ -24,7 +24,7 @@ public class CondicaoPagamento {
     @Column(name = "ds_tipo_pagamento", nullable = false)
     private TipoPagamento tipoPagamento;
 
-    @OneToOne(mappedBy = "cd_condicao_pagamento")
+    @OneToOne(mappedBy = "condicaoPagamento")
     private Preco preco;
 
     public CondicaoPagamento() {

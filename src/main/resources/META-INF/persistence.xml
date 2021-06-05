@@ -2,10 +2,16 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 		     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
 		     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="GlobalSolutionLFLTechnology-persistence-unit" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="persistence-unit" transaction-type="RESOURCE_LOCAL">
 		<description>Forge Persistence Unit</description>
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-    	<exclude-unlisted-classes>false</exclude-unlisted-classes>
+	  <class>br.com.fiap.gs.lflTechnology.model.Hotel</class>
+	  <class>br.com.fiap.gs.lflTechnology.model.Quarto</class>
+	  <class>br.com.fiap.gs.lflTechnology.model.Preco</class>
+	  <class>br.com.fiap.gs.lflTechnology.model.CondicaoPagamento</class>
+	  <class>br.com.fiap.gs.lflTechnology.model.Endereco</class>
+
+	  <exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 
 			<!-- Propriedades JDBC -->

@@ -3,6 +3,8 @@ package br.com.fiap.gs.lflTechnology.model;
 import jakarta.validation.constraints.Email;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "hotel", sequenceName = "SQ_LFL_HOTEL", allocationSize = 1)
@@ -30,6 +32,18 @@ public class Hotel {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_endereco")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Quarto> quartos;
+
+    public void AddQuartos(Quarto quarto) {
+        if (quartos == null)
+            quartos = new ArrayList<>();
+
+        // Adicionar o quarto na lista de quartos
+        quartos.add(quarto);
+        quarto.setHotel(this);
+    }
 
     public Hotel() {
     }
@@ -89,6 +103,5 @@ public class Hotel {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
 
 }
