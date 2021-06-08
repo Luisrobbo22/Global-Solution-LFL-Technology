@@ -15,35 +15,21 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
-<!--            <property name="hibernate.show_sql" value="true"/>-->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
-<!--            <property name="hibernate.dialect"-->
-<!--                      value="org.hibernate.dialect.Oracle12cDialect"/>-->
-<!--            <property name="javax.persistence.jdbc.driver"-->
-<!--                      value="oracle.jdbc.OracleDriver"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="RM82762"/>-->
-<!--            <property name="javax.persistence.jdbc.password"-->
-<!--                      value="221297"/>-->
-<!--            <property name="javax.persistence.jdbc.url"-->
-<!--                      value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl/globalSolutionLflTechnology"/>-->
-<!--        </properties>-->
+            <!-- Propriedades JDBC -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/globalsolutionlfltechnology"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
 
-
-                			<!-- Propriedades JDBC -->
-                			<property name="javax.persistence.jdbc.driver"
-                				value="com.mysql.jdbc.Driver" />
-                			<property name="javax.persistence.jdbc.url"
-                				value="jdbc:mysql://localhost:3306/globalSolution" />
-                			<property name="javax.persistence.jdbc.user" value="root" />
-                			<property name="javax.persistence.jdbc.password" value="" />
-
-                			<property name="hibernate.hbm2ddl.auto" value="update" />
-                			<property name="hibernate.show_sql" value="true" />
-                			<property name="hibernate.format_sql" value="true" />
-                			<property
-                				name="hibernate.transaction.flush_before_completion" value="true" />
-                			<property name="hibernate.dialect"
-                				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-                		</properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property
+                    name="hibernate.transaction.flush_before_completion" value="true"/>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+        </properties>
     </persistence-unit>
 </persistence>

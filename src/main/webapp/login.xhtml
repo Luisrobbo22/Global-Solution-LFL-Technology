@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="header"></ui:define>
+    <ui:define name="content">
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+
+        <h:form>
+            <p:card class="card-form">
+                <f:facet name="title">
+                    Login
+                </f:facet>
+
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="email" value="Email"/>
+                    <p:inputText id="email" type="email"
+                                 value="#{usuarioBean.usuario.email}" required="true"
+                                 validatorMessage="Email inválido.">
+                        <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="senha" value="Senha"/>
+                    <p:password id="senha"
+                                value="#{usuarioBean.usuario.senha}"
+                                required="true"
+                                toggleMask="true"
+                                validatorMessage="A senha deve ser composta pelo menos o mínimo de oito caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um número">
+                        <f:validateRegex
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:password>
+
+                </h:panelGrid>
+
+                <f:facet name="footer">
+                    <p:commandButton icon="pi pi-check" value="Login"
+                                     action="#{usuarioBean.login}">
+                        <p:ajax execute="@form"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="Cadastre-se"
+                                     styleClass="ui-button-secondary"
+                                     style="margin-left: 7em"
+                                     action="#{usuarioBean.cadastrar}">
+                        <p:ajax execute="@form"/>
+                    </p:commandButton>
+
+
+                </f:facet>
+                
+
+            </p:card>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+
+</html>
