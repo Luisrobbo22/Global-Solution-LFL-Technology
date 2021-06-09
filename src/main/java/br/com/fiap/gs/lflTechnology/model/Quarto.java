@@ -31,13 +31,26 @@ public class Quarto {
     @Max(350)
     private Integer diasReservados;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "quartos", nullable = false)
     private Hotel hotel;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_preco", nullable = false)
     private Preco preco;
+
+    public Quarto() {
+    }
+
+    public Quarto(String nome, String descricao, double tamanhoMetrosQuadrados, String descricaoComodidades, Integer diasReservados, Hotel hotel, Preco preco) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tamanhoMetrosQuadrados = tamanhoMetrosQuadrados;
+        this.descricaoComodidades = descricaoComodidades;
+        this.diasReservados = diasReservados;
+        this.hotel = hotel;
+        this.preco = preco;
+    }
 
     public String getNome() {
         return nome;
@@ -84,5 +97,13 @@ public class Quarto {
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
+    }
+
+    public Preco getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Preco preco) {
+        this.preco = preco;
     }
 }

@@ -1,13 +1,12 @@
 package br.com.fiap.gs.lflTechnology.model;
 
-import br.com.fiap.gs.lflTechnology.model.enums.TipoPagamento;
 import br.com.fiap.gs.lflTechnology.model.enums.TipoPessoa;
 
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name = "T_LFL_USUARIO")
+@Table(name = "T_LFL_USUARIO", schema = "globalsolution")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

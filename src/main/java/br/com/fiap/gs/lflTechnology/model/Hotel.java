@@ -42,7 +42,7 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Quarto> quartos;
 
-    public void AddQuartos(Quarto quarto) {
+    public void addQuartos(Quarto quarto) {
         if (quartos == null)
             quartos = new ArrayList<>();
 

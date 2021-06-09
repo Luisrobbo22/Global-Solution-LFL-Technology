@@ -25,12 +25,21 @@ public class Preco {
     @OneToOne(mappedBy = "preco")
     private Quarto quarto;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_LFL_PRECO_CONDICAO_PAGAMENTO",
             joinColumns = @JoinColumn(name = "cd_preco"),
             inverseJoinColumns = @JoinColumn(name = "cd_condicao_pagamento"))
     private List<CondicaoPagamento> condicoesPagamentos;
 
+    public Preco() {
+    }
+
+    public Preco(BigDecimal precoDiaria, Calendar dataAtualizacao, Quarto quarto, List<CondicaoPagamento> condicoesPagamentos) {
+        this.precoDiaria = precoDiaria;
+        this.dataAtualizacao = dataAtualizacao;
+        this.quarto = quarto;
+        this.condicoesPagamentos = condicoesPagamentos;
+    }
 
     public Integer getId() {
         return id;

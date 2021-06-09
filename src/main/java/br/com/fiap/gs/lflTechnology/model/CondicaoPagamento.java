@@ -30,6 +30,11 @@ public class CondicaoPagamento {
     public CondicaoPagamento() {
     }
 
+    public CondicaoPagamento(String descricao, Integer quantidadeParcelas, TipoPagamento tipoPagamento) {
+        this.descricao = descricao;
+        this.quantidadeParcelas = quantidadeParcelas;
+        this.tipoPagamento = tipoPagamento;
+    }
 
     public Integer getId() {
         return id;
