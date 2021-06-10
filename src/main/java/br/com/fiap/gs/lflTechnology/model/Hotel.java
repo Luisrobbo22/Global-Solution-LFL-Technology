@@ -110,4 +110,11 @@ public class Hotel {
         this.endereco = endereco;
     }
 
+    public List<Quarto> getQuartos() {
+        return quartos;
+    }
+
+    public void setQuartos(List<Quarto> quartos) {
+        this.quartos = quartos;
+    }
 }

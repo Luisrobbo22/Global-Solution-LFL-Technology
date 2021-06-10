@@ -49,10 +49,12 @@
                         <p:ajax execute="@form"/>
                     </p:commandButton>
 
-                    <p:commandButton value="Cadastre-se"
+                    <p:commandButton
+                                     value="Cadastre-se"
                                      styleClass="ui-button-secondary"
                                      style="margin-left: 7em"
-                                     action="#{usuarioBean.cadastrar}">
+                                     action="#{usuarioBean.cadastrar}"
+                                     ignoreComponentNotFound="true">
                         <p:ajax execute="@form"/>
                     </p:commandButton>
 

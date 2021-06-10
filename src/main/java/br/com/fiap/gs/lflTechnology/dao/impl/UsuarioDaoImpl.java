@@ -16,7 +16,7 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario, Integer> implements 
     @Override
     public boolean exist(Usuario usuario) {
         TypedQuery<Usuario> query =
-                em.createQuery("SELECT u FROM Usuario u WHERE u.email = :pEmail and u.senha =:pSenha", Usuario.class)
+                em.createQuery("from Usuario u WHERE u.email = :pEmail and u.senha =:pSenha", Usuario.class)
                         .setParameter("pEmail", usuario.getEmail())
                         .setParameter("pSenha", usuario.getSenha());
 
@@ -31,6 +31,7 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario, Integer> implements 
 
     @Override
     public List<Usuario> getAll() {
-        return em.createQuery("SELECT u FROM Usuario u").getResultList();
+        TypedQuery<Usuario> query = em.createQuery("FROM Usuario", Usuario.class);
+        return query.getResultList();
     }
 }

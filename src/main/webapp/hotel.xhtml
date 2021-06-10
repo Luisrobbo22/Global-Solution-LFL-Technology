@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+    <ui:define name="content">
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+
+        <h:form>
+            <p:card class="card-form">
+                <f:facet name="title">
+                    Cadastro de Hotéis
+                </f:facet>
+
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="name" value="Nome do Hotel"/>
+                    <p:inputText id="name" value="#{hotelBean.hotel.nome}"
+                                 required="true"
+                                 validatorMessage="Nome do Hotel obrigatório">
+                        <f:validateLength minimum="1"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="descricao" value="Descrição do Hotel"/>
+                    <p:inputText id="descricao" value="#{hotelBean.hotel.descricao}"
+                                 required="true"
+                                 validatorMessage="Campo da descrição do Hotel é obrigatório">
+                        <f:validateLength minimum="1"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="telefone" value="Telefone do Hotel"/>
+                    <p:inputText id="telefone" value="#{hotelBean.hotel.telefone}"
+                                 required="true"
+
+                                 validatorMessage="Campodo do telefone do Hotel é obrigatório">
+                        <f:validateLength minimum="1"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="email" value="Email"/>
+                    <p:inputText id="email" type="email"
+                                 value="#{hotelBean.hotel.email}" required="true"
+                                 validatorMessage="Email inválido.">
+                        <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        <f:ajax event="blur" render="messages"/>
+                    </p:inputText>
+
+                </h:panelGrid>
+
+                <f:facet name="footer">
+                    <p:commandButton icon="pi pi-check" value="Save"
+                                     action="#{hotelBean.save}"
+                                     resetValues="true">
+                        <p:ajax execute="@form"/>
+                    </p:commandButton>
+                    <p:button value="Cancel" styleClass="ui-button-secondary" onclick="login.xhtml" />
+
+                </f:facet>
+
+            </p:card>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+
+</html>

@@ -4,10 +4,34 @@ import br.com.fiap.gs.lflTechnology.dao.HotelDAO;
 import br.com.fiap.gs.lflTechnology.model.Hotel;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements HotelDAO {
 
     public HotelDaoImpl(EntityManager entityManager) {
         super(entityManager);
+    }
+
+    @Override
+    public List<Hotel> buscarHotelPorCidadeEEstado(Hotel hotel) {
+        TypedQuery<Hotel> query =
+                em.createQuery("SELECT h FROM Hotel h WHERE h.endereco.cidade like :pCidade and h.endereco.estado like :pEstado", Hotel.class)
+                        .setParameter("pCidade", hotel.getEndereco().getCidade())
+                        .setParameter("pEstado", hotel.getEndereco().getEstado());
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Hotel> getAll() {
+        return em.createQuery("FROM Hotel", Hotel.class).getResultList();
+    }
+
+    @Override
+    public Hotel findById(Integer id) {
+        return em.createQuery("FROM Hotel h WHERE h.id =:pId", Hotel.class)
+                .setParameter("pId", id)
+                .getSingleResult();
     }
 }

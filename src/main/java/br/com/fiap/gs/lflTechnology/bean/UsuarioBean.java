@@ -2,16 +2,15 @@ package br.com.fiap.gs.lflTechnology.bean;
 
 import br.com.fiap.gs.lflTechnology.dao.UsuarioDAO;
 import br.com.fiap.gs.lflTechnology.dao.impl.UsuarioDaoImpl;
+import br.com.fiap.gs.lflTechnology.exception.CommitException;
 import br.com.fiap.gs.lflTechnology.model.Usuario;
 import br.com.fiap.gs.lflTechnology.singleton.EntityManagerFactorySingleton;
 
-import javax.el.MethodExpression;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class UsuarioBean {
 
     private Usuario usuario = new Usuario();
     private final FacesContext context = FacesContext.getCurrentInstance();
-    private final EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-    private final UsuarioDAO dao = new UsuarioDaoImpl(em);
+    private EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+    private UsuarioDAO dao = new UsuarioDaoImpl(em);
 
     public String login() {
         boolean exist = dao.exist(usuario);
@@ -35,7 +34,7 @@ public class UsuarioBean {
         context.getExternalContext().getFlash().setKeepMessages(true);
 
         context.addMessage(null, new FacesMessage(SEVERITY_ERROR, "Login inválido", "Login inválido"));
-        return "login?faces-redirect=true";
+        return "user?faces-redirect=true";
     }
 
     public String logout() {
@@ -52,13 +51,15 @@ public class UsuarioBean {
         }
     }
     public void save() {
-        dao.create(this.usuario);
+        em.getTransaction().begin();
+        em.persist(usuario);
+        em.getTransaction().commit();
         System.out.println("salvando usuario....");
         context.addMessage(null, new FacesMessage("Usuário cadastrado com sucesso"));
     }
 
     public List<Usuario> getUsuarios(){
-        List<Usuario> usuarios = dao.getAll();
+        List<Usuario> usuarios = new UsuarioDaoImpl(em).getAll();
 
         if (usuarios.isEmpty() || usuario == null) {
             context.addMessage(null, new FacesMessage("Não há usuário cadastrado!"));

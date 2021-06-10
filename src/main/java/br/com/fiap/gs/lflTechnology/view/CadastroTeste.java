@@ -5,15 +5,11 @@ import br.com.fiap.gs.lflTechnology.dao.impl.*;
 import br.com.fiap.gs.lflTechnology.exception.CommitException;
 import br.com.fiap.gs.lflTechnology.model.*;
 import br.com.fiap.gs.lflTechnology.model.enums.TipoPagamento;
-import br.com.fiap.gs.lflTechnology.model.enums.TipoPessoa;
 import br.com.fiap.gs.lflTechnology.singleton.EntityManagerFactorySingleton;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 public class CadastroTeste {
     public static void main(String[] args) {
@@ -53,7 +49,7 @@ public class CadastroTeste {
         quarto.setPreco(preco);
         quarto.setHotel(hotel);
 
-        Usuario usuario = new Usuario("José da Silva", "jose@email.com", "Jose1234", new GregorianCalendar(1995, Calendar.DECEMBER, 22), TipoPessoa.COMUM);
+        Usuario usuario = new Usuario("José da Silva", "jose@email.com", "Jose1234", new Date());
 
         quartoDAO.create(quarto);
         usuarioDAO.create(usuario);

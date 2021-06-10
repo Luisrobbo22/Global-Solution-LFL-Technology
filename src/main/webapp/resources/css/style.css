@@ -9,7 +9,7 @@ body{
 	margin: 1em auto;
 }
 
-.setup-list-item {
+.hotel-list {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -17,28 +17,28 @@ body{
     padding: 1rem;
 }
 
-.setup-list-detail, user-list-detail {
+.hotel-list-detail, user-list-detail {
     flex: 1 1 0;
     -ms-flex: 1 1 0;
 }
 
-.setup-name {
+.hotel-nome {
     font-size: 1rem;
     font-weight: 700;
 }
 
-.setup-description {
+.hotel-descricao {
     margin: 0 0 1rem 0;
 }
 
-.setup-list-action {
+.hotel-list-action {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
 }
 
-.setup-price {
+.hotel-price {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: .5rem;

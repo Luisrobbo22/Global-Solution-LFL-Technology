@@ -11,7 +11,9 @@
         <class>br.com.fiap.gs.lflTechnology.model.Preco</class>
         <class>br.com.fiap.gs.lflTechnology.model.CondicaoPagamento</class>
         <class>br.com.fiap.gs.lflTechnology.model.Endereco</class>
-
+        <class>br.com.fiap.gs.lflTechnology.model.Usuario</class>
+        <class>br.com.fiap.gs.lflTechnology.model.enums.TipoPessoa</class>
+        <class>br.com.fiap.gs.lflTechnology.model.enums.TipoPagamento</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>

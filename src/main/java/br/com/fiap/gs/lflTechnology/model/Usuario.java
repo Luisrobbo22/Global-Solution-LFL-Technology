@@ -1,12 +1,11 @@
 package br.com.fiap.gs.lflTechnology.model;
 
-import br.com.fiap.gs.lflTechnology.model.enums.TipoPessoa;
-
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
-@Table(name = "T_LFL_USUARIO", schema = "globalsolution")
+@Table(name = "T_LFL_USUARIO")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,29 +15,24 @@ public class Usuario {
     @Column(name = "nm_usuario", nullable = false)
     private String nome;
 
-    @Column(name = "ds_email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "ds_senha", nullable = false)
+    @Column(name = "senha", nullable = false)
     private String senha;
 
     @Temporal(TemporalType.DATE)
-    @Column(name= "dt_nascimento", nullable = false)
-    private Calendar dataNascimento;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ds_tipo_pessoa", nullable = false)
-    private TipoPessoa tipoPessoa;
+    @Column(name = "dt_nascimento", nullable = false)
+    private Date dataNascimento;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, Calendar dataNascimento, TipoPessoa tipoPessoa) {
+    public Usuario(String nome, String email, String senha, Date dataNascimento) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.dataNascimento = dataNascimento;
-        this.tipoPessoa = tipoPessoa;
     }
 
     public Integer getId() {
@@ -73,19 +67,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Calendar getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public TipoPessoa getTipoPessoa() {
-        return tipoPessoa;
-    }
-
-    public void setTipoPessoa(TipoPessoa tipoPessoa) {
-        this.tipoPessoa = tipoPessoa;
-    }
 }

@@ -15,22 +15,21 @@
 	
 	<div id="header">
 		<ui:insert name="header">
-			<h:form>
-				<h:commandLink action="#{usuarioBean.logout}">Logout</h:commandLink>
-
-			</h:form>
-
 			<div class="card">
 			    <p:tabMenu activeIndex="#{param.i}">
-			        <p:menuitem value="Home" outcome="login.xhtml" icon="pi pi-fw pi-home">
+			        <p:menuitem value="Hoteis" outcome="index.xhtml" icon="pi pi-fw pi-home">
 			            <f:param name="i" value="0"/>
 			        </p:menuitem>
-			        <p:menuitem value="Setup" outcome="login.xhtml" icon="pi pi-fw pi-desktop">
+			        <p:menuitem value="Cadastro de Hotel" outcome="hotel.xhtml" icon="pi pi-fw pi-home">
 			            <f:param name="i" value="1"/>
 			        </p:menuitem>
-			        <p:menuitem value="Profile" outcome="user.xhtml" icon="pi pi-fw pi-user">
+			        <p:menuitem value="Cadastro de Usuário" outcome="user.xhtml" icon="pi pi-fw pi-user">
 			            <f:param name="i" value="2"/>
 			        </p:menuitem>
+					<p:menuitem value="Logout" outcome="login.xhtml" icon="pi pi-fw pi-sign-out"
+								styleClass="ui-button-info" action="#{usuarioBean.logout}">
+						<f:param name="i" value="3"/>
+					</p:menuitem>
 			    </p:tabMenu>
 			</div>
     	</ui:insert>
