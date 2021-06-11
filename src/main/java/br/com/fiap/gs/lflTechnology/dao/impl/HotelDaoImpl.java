@@ -34,4 +34,11 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
                 .setParameter("pId", id)
                 .getSingleResult();
     }
+
+    @Override
+    public List<Hotel> buscarHoteisPorAvaliacoes(int estrelas) {
+        return em.createQuery("From Hotel h WHERE h.avaliacao =:pEstrelas", Hotel.class)
+                .setParameter("pEstrelas", estrelas)
+                .getResultList();
+    }
 }

@@ -11,4 +11,6 @@ public interface HotelDAO extends GenericDAO<Hotel, Integer> {
     public List<Hotel> getAll();
 
     public Hotel findById(Integer id);
+
+    List<Hotel> buscarHoteisPorAvaliacoes(int estrelas);
 }

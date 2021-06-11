@@ -54,11 +54,12 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(String nome, String descricao, String telefone, String email, Endereco endereco) {
+    public Hotel(String nome, String descricao, String telefone, String email, int avaliacao, Endereco endereco) {
         this.nome = nome;
         this.descricao = descricao;
         this.telefone = telefone;
         this.email = email;
+        this.avaliacao = avaliacao;
         this.endereco = endereco;
     }
 
@@ -100,6 +101,14 @@ public class Hotel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(int avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public Endereco getEndereco() {

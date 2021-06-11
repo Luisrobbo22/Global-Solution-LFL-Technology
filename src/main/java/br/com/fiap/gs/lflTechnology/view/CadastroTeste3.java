@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class CadastroTeste {
+public class CadastroTeste3 {
     public static void main(String[] args) {
         EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 
@@ -32,28 +32,28 @@ public class CadastroTeste {
          * Instanciando as Entidades
          */
 
-        Hotel hotel = new Hotel("Copacabana Palace",
-                "Hotel mais famoso do Brasil", "(21)52487070",
+        Hotel hotel = new Hotel("Botanique Hotel & SPA",
+                "Melhor hotel do vale do paraiba", "(21)52487070",
                 "copacabana@email.com",5, null);
 
-        Endereco endereco = new Endereco("Avenida Atlantica", "Rio de Janeiro",
-                "RJ", "09745-987", "Brasil", null);
+        Endereco endereco = new Endereco("Rua Elídio Gonçalves da Silva", "Campos do Jordão",
+                "SP", "12460000", "Brasil", null);
 
-        Quarto quarto = new Quarto("Suite Cobertura", "Suite top master cobertura", 40, "Completa",
-                3, hotel, null);
+        Quarto quarto = new Quarto("Suite de Luxo", "Suite com vista para o jardim", 42, "Completa",
+                4, hotel, null);
 
-        CondicaoPagamento condicaoPagamento = new CondicaoPagamento("Pagamento da suíte reservada", 2, TipoPagamento.CARTAO_CREDITO);
+        CondicaoPagamento condicaoPagamento = new CondicaoPagamento("Pagamento da suíte reservada", 2, TipoPagamento.DINHEIRO);
         List<CondicaoPagamento> condicaoPagamentoList = new ArrayList<>();
         condicaoPagamentoList.add(condicaoPagamento);
 
-        Preco preco = new Preco(new BigDecimal(69.90), Calendar.getInstance(), quarto, condicaoPagamentoList);
+        Preco preco = new Preco(new BigDecimal(189.90), Calendar.getInstance(), quarto, condicaoPagamentoList);
 
         hotel.addQuartos(quarto);
         hotel.setEndereco(endereco);
         quarto.setPreco(preco);
         quarto.setHotel(hotel);
 
-        Usuario usuario = new Usuario("José da Silva", "jose@email.com", "Jose1234", new Date());
+        Usuario usuario = new Usuario("Thiago Souza", "thiago@email.com", "Thiago1234", new Date());
 
         try {
             quartoDAO.create(quarto);
