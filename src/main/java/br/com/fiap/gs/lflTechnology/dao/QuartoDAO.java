@@ -7,5 +7,5 @@ import java.util.List;
 public interface QuartoDAO extends GenericDAO<Quarto, Integer> {
 
 
-    public List<Quarto> buscarTodosOsQuartosEOrdernarPorMenorPreco(Quarto quarto);
+    public List<Quarto> buscarTodosOsQuartosEOrdernarPorMenorPreco();
 }

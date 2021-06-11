@@ -13,8 +13,8 @@ public class QuartoDaoImpl extends GenericDaoImpl<Quarto, Integer> implements Qu
     }
 
     @Override
-    public List<Quarto> buscarTodosOsQuartosEOrdernarPorMenorPreco(Quarto quarto) {
-        return em.createQuery("FROM Quarto q order by q.preco desc", Quarto.class)
+    public List<Quarto> buscarTodosOsQuartosEOrdernarPorMenorPreco() {
+        return em.createQuery("FROM Quarto q order by q.preco.precoDiaria desc", Quarto.class)
                 .getResultList();
     }
 }

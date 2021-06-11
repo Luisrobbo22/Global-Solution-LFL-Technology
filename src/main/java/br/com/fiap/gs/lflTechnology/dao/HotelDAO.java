@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface HotelDAO extends GenericDAO<Hotel, Integer> {
 
-    public List<Hotel> buscarHotelPorCidadeEEstado(Hotel hotel);
+    public List<Hotel> buscarHotelPorCidadeEEstado(String cidade, String estado);
 
     public List<Hotel> getAll();
 

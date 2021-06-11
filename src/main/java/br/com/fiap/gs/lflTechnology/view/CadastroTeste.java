@@ -9,7 +9,10 @@ import br.com.fiap.gs.lflTechnology.singleton.EntityManagerFactorySingleton;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class CadastroTeste {
     public static void main(String[] args) {
@@ -34,7 +37,7 @@ public class CadastroTeste {
                 "copacabana@email.com", null);
 
         Endereco endereco = new Endereco("Avenida Atlantica", "Rio de Janeiro",
-                        "RJ", "097445-987", "Brasil", hotel);
+                "RJ", "09745-987", "Brasil", null);
 
         Quarto quarto = new Quarto("Suite Cobertura", "Suite top master cobertura", 40, "Completa",
                 3, hotel, null);
@@ -46,14 +49,15 @@ public class CadastroTeste {
         Preco preco = new Preco(new BigDecimal(69.90), Calendar.getInstance(), quarto, condicaoPagamentoList);
 
         hotel.addQuartos(quarto);
+        hotel.setEndereco(endereco);
         quarto.setPreco(preco);
         quarto.setHotel(hotel);
 
         Usuario usuario = new Usuario("José da Silva", "jose@email.com", "Jose1234", new Date());
 
-        quartoDAO.create(quarto);
-        usuarioDAO.create(usuario);
         try {
+            quartoDAO.create(quarto);
+            usuarioDAO.create(usuario);
             quartoDAO.commit();
             usuarioDAO.commit();
             System.out.println("Quarto cadastrado com sucesso");

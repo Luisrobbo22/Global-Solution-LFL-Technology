@@ -14,11 +14,11 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
     }
 
     @Override
-    public List<Hotel> buscarHotelPorCidadeEEstado(Hotel hotel) {
+    public List<Hotel> buscarHotelPorCidadeEEstado(String cidade, String estado) {
         TypedQuery<Hotel> query =
                 em.createQuery("SELECT h FROM Hotel h WHERE h.endereco.cidade like :pCidade and h.endereco.estado like :pEstado", Hotel.class)
-                        .setParameter("pCidade", hotel.getEndereco().getCidade())
-                        .setParameter("pEstado", hotel.getEndereco().getEstado());
+                        .setParameter("pCidade", cidade)
+                        .setParameter("pEstado", estado);
 
         return query.getResultList();
     }
