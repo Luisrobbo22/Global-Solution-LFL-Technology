@@ -2,8 +2,6 @@ package br.com.fiap.gs.lflTechnology.controller;
 
 import br.com.fiap.gs.lflTechnology.dao.HotelDAO;
 import br.com.fiap.gs.lflTechnology.dao.impl.HotelDaoImpl;
-import br.com.fiap.gs.lflTechnology.exception.CommitException;
-import br.com.fiap.gs.lflTechnology.exception.EntityNotFoundException;
 import br.com.fiap.gs.lflTechnology.model.Hotel;
 import br.com.fiap.gs.lflTechnology.singleton.EntityManagerFactorySingleton;
 
@@ -94,21 +92,14 @@ public class HotelController {
     public Response delete(@PathParam("id") Integer id) {
         Hotel hotel = null;
         em.getTransaction().begin();
-
-        //hotel = em.find(Hotel.class, id);
         hotel = hotelDAO.findById(id);
         if (hotel == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         em.remove(hotel);
+        em.flush();
         em.getTransaction().commit();
-//        try {
-//            hotelDAO.delete(id);
-//            hotelDAO.commit();
-//        } catch (EntityNotFoundException | CommitException e) {
-//            e.printStackTrace();
-//        }
-        em.close();
+
         return Response.status(Response.Status.ACCEPTED).build();
     }
 }
